@@ -9,7 +9,7 @@ export default function Movies() {
 
     useEffect(() => {
         const promisse = axios.get('https://mock-api.driven.com.br/api/v7/cineflex/movies')
-        promisse.then((resp) => { console.log(resp.date); setMovies(resp.data) })
+        promisse.then((resp) => { setMovies(resp.data) })
     }, [])
 
     return (

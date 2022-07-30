@@ -1,12 +1,15 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export default function Movie({ info }) {
     return (
-        <Wrapper>
-            <div className="movie" id={info.id}>
-                <img src={info.posterURL} alt="" />
-            </div>
-        </Wrapper>
+        <Link to={`/filme/${info.id}`}>
+            <Wrapper>
+                <div className="movie" id={info.id}>
+                    <img src={info.posterURL} alt="" />
+                </div>
+            </Wrapper>
+        </Link>
     )
 };
 
@@ -16,17 +19,13 @@ const Wrapper = styled.div`
         height: 210px;
 
         margin: 5px;
+        padding: 10px;
 
         background: #FFFFFF;
         box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
         border-radius: 3px;
 
         object-fit: contain;
-    }
-
-    img {
-        width: 90%;
-        height: 90%;
     }
 `
 
