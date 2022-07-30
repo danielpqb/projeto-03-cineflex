@@ -1,13 +1,17 @@
 import styled from "styled-components"
 import Seat from "./Seat"
 
-export default function Seats({ seats }) {
-
-    console.log(seats)
+export default function Seats({ seats, seatsSelected, setSeatsSelected }) {
 
     return (
         <Wrapper>
-            <Seat seats={seats} />
+            {
+                seats.map((seat, index) => {
+                    return (
+                        <Seat seat={seat} key={index} seats={seats} seatsSelected={seatsSelected} setSeatsSelected={setSeatsSelected} />
+                    )
+                })
+            }
             <div className="labels">
                 <div className="label">
                     <div className="selected"></div>
@@ -56,8 +60,8 @@ const Wrapper = styled.div`
     .unavailable {
         margin: 5px;
         border-radius: 17px;
-        width: 24px;
-        height: 24px;
+        width: 26px;
+        height: 26px;
     }
 
     .selected {
