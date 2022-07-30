@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import Movie from "./Movie"
 
 export default function Footer() {
 
