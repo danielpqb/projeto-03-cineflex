@@ -1,31 +1,46 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Receipt() {
+export default function Receipt({ clientData, seatsSelected, getSession }) {
     return (
         <Wrapper>
             <div>
                 <h1>Filme e sessão</h1>
                 <h2>
-                    {'$movieName'}
+                    {getSession.movie.title}
                     <br />
-                    {'$movieDate $movieTime'}
+                    {`${getSession.day.date} ${getSession.name}`}
                 </h2>
             </div>
 
             <div>
                 <h1>Ingressos</h1>
                 <h2>
-                    {`Assento ${'$id'}`}
+                    {seatsSelected.map((value, index) => {
+                        for (const element of getSession.seats) {
+                            if (element.id === value) {
+                                return (
+                                    <div key={index}>
+                                        {`Assento ${element.name}`}
+                                    </div>
+                                )
+                            }
+                        }
+                        return (
+                            <div key={index}>
+                                ERRO: Assento não encontrado!
+                            </div>
+                        )
+                    })}
                 </h2>
             </div>
 
             <div>
                 <h1>Comprador</h1>
                 <h2>
-                    {`Nome: ${'$name'}`}
+                    {`Nome: ${clientData.name}`}
                     <br />
-                    {`CPF: ${'$cpf'}`}
+                    {`CPF: ${clientData.cpf}`}
                 </h2>
             </div>
 

@@ -1,9 +1,14 @@
+import { useLocation } from "react-router-dom"
 import styled from "styled-components"
 
 import Header from "../../Header"
 import Receipt from "./Receipt"
 
 export default function ReceiptScreen() {
+
+    const { state } = useLocation()
+    let { clientData, seatsSelected, getSession } = state
+
     return (
         <Wrapper>
             <Header headerText={
@@ -13,7 +18,7 @@ export default function ReceiptScreen() {
                     </div>
                 </>
             } />
-            <Receipt />
+            <Receipt clientData={clientData} seatsSelected={seatsSelected} getSession={getSession} />
         </Wrapper>
     )
 };

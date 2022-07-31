@@ -2,7 +2,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
-export default function ClientDataForm({ clientData, setClientData, seatsSelected }) {
+export default function ClientDataForm({ clientData, setClientData, seatsSelected, getSession }) {
 
     const navigate = useNavigate()
 
@@ -22,7 +22,7 @@ export default function ClientDataForm({ clientData, setClientData, seatsSelecte
         )
 
         promise.then(() => {
-            navigate('/sucesso', { replace: false, state: { clientData: clientData, seatsSelected: seatsSelected } })
+            navigate('/sucesso', { replace: false, state: { clientData: clientData, seatsSelected: seatsSelected, getSession: getSession } })
         })
     }
 

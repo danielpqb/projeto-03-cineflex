@@ -14,6 +14,7 @@ export default function SessionScreen() {
     const [getSession, setGetSession] = useState({})
     const { sessionId } = useParams()
 
+    console.log(getSession)
     console.log(seatsSelected)
     console.log(clientData)
 
@@ -30,7 +31,7 @@ export default function SessionScreen() {
                 <Wrapper>
                     <Header headerText='Selecione o(s) assento(s)' />
                     <Seats seats={getSession.seats} seatsSelected={seatsSelected} setSeatsSelected={setSeatsSelected} />
-                    <ClientDataForm clientData={clientData} setClientData={setClientData} seatsSelected={seatsSelected} />
+                    <ClientDataForm clientData={clientData} setClientData={setClientData} seatsSelected={seatsSelected} getSession={getSession} />
                     <Footer posterURL={getSession.movie.posterURL} title={getSession.movie.title} day={getSession.day} time={getSession.name} />
                 </Wrapper>
             }
