@@ -14,9 +14,9 @@ export default function SessionScreen() {
     const [getSession, setGetSession] = useState({})
     const { sessionId } = useParams()
 
-    console.log(getSession)
-    console.log(seatsSelected)
-    console.log(clientData)
+    // console.log(getSession)
+    // console.log(seatsSelected)
+    // console.log(clientData)
 
     useEffect(() => {
         const promisse = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`)
