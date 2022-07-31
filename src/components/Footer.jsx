@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     left: 0;
     bottom: 0;
 
-    width: 100vw;
+    width: 100%;
     height: 120px;
 
     justify-content: flex-start;
@@ -38,7 +38,7 @@ const Wrapper = styled.div`
     font-size: 26px;
 
     background: #DFE6ED;
-    border: 1px solid #9EADBA;
+    border-top: 1px solid #9EADBA;
 
     z-index: 1;
 }

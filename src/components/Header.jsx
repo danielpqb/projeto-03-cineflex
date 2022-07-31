@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     left: 0;
     top: 0;
 
-    width: 100vw;
+    width: 100%;
     height: auto;
 
     flex-direction: column;

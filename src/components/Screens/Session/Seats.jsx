@@ -32,8 +32,6 @@ export default function Seats({ seats, seatsSelected, setSeatsSelected }) {
 
 const Wrapper = styled.div`
     & {
-        margin-top: 140px;
-        margin-bottom: 140px;
         flex-wrap: wrap;
         min-width: 380px;
         max-width: 380px;
