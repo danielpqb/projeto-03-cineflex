@@ -1,9 +1,34 @@
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
-export default function ClientDataForm() {
+export default function ClientDataForm({ clientData, setClientData, seatsSelected }) {
+
+    const navigate = useNavigate()
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        if (seatsSelected.length === 0) {
+            return alert(`Olá, ${clientData.name}.\nPor favor escolha um assento.`)
+        }
+
+        const promise = axios.post(
+            'https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many',
+            {
+                ids: seatsSelected,
+                name: clientData.name,
+                cpf: clientData.cpf,
+            }
+        )
+
+        promise.then(() => {
+            navigate('/sucesso', { replace: false, state: { clientData: clientData, seatsSelected: seatsSelected } })
+        })
+    }
+
     return (
         <>
-            <FormWrapper action="">
+            <FormWrapper action="" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Nome do comprador:</label>
                     <input
@@ -11,6 +36,8 @@ export default function ClientDataForm() {
                         placeholder="Digite seu nome..."
                         name="name"
                         required
+                        value={clientData.name}
+                        onChange={(e) => { setClientData({ ...clientData, name: e.target.value }) }}
                     />
                 </div>
                 <div>
@@ -20,13 +47,17 @@ export default function ClientDataForm() {
                         placeholder="Digite seu CPF..."
                         name="cpf"
                         required
-                        pattern="^([0-9]){3}\.([0-9]){3}-([0-9]){2}$"
+                        pattern="^([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}$"
+                        value={clientData.cpf}
+                        onChange={(e) => { setClientData({ ...clientData, cpf: e.target.value }) }}
                     />
                 </div>
+                <div>
+                    <ButtonWrapper type="submit">
+                        Reservar assento(s)
+                    </ButtonWrapper>
+                </div>
             </FormWrapper>
-            <ButtonWrapper>
-                Reservar assento(s)
-            </ButtonWrapper>
         </>
     )
 };
@@ -37,7 +68,6 @@ const FormWrapper = styled.form`
     min-width: 380px;
     max-width: 380px;
 
-    margin-top: 25px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -82,23 +112,26 @@ const FormWrapper = styled.form`
     }
 `
 
-const ButtonWrapper = styled.div`
-    width: 225px;
-    height: 45px;
+const ButtonWrapper = styled.button`
+    & {
+        align-self: center;
 
-    margin-top: 30px;
+        border: none;
 
-    background: #E8833A;
-    border-radius: 3px;
+        width: 225px;
+        height: 45px;
 
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    text-align: center;
+        margin-top: 30px;
 
-    color: #FFFFFF;
+        background: #E8833A;
+        border-radius: 3px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
 `
-
-/*value={name}
-onChange={(e) => { setName(e.target.value) }}*/

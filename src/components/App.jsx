@@ -4,7 +4,7 @@ import { GlobalStyle } from "../GlobalStyles"
 import HomeScreen from "./Screens/Home/HomeScreen";
 import MovieScreen from "./Screens/Movie/MovieScreen";
 import SessionScreen from "./Screens/Session/SessionScreen";
-import ReceiptScreen from "./Screens/Receipt/ReceiptScree";
+import ReceiptScreen from "./Screens/Receipt/ReceiptScreen";
 
 export default function App() {
     return (

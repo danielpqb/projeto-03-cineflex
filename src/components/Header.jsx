@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function Header() {
+export default function Header({ headerText }) {
 
     return (
         <Wrapper>
@@ -8,7 +8,7 @@ export default function Header() {
                 CINEFLEX
             </div>
             <div className="text">
-                Selecione o filme
+                {headerText}
             </div>
         </Wrapper>
     )
@@ -46,5 +46,12 @@ const Wrapper = styled.div`
     color: #293845;
     font-size: 24px;
     height: 70px;
+}
+
+.success {
+    font-weight: 700;
+    font-size: 24px;
+
+    color: #247A6B;
 }
 `

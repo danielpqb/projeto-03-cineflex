@@ -9,11 +9,13 @@ import axios from "axios"
 import styled from "styled-components"
 
 export default function SessionScreen() {
+    const [clientData, setClientData] = useState({ name: '', cpf: '' })
     const [seatsSelected, setSeatsSelected] = useState([])
     const [getSession, setGetSession] = useState({})
     const { sessionId } = useParams()
 
     console.log(seatsSelected)
+    console.log(clientData)
 
     useEffect(() => {
         const promisse = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`)
@@ -26,9 +28,9 @@ export default function SessionScreen() {
         <>
             {getSession.seats !== undefined &&
                 <Wrapper>
-                    <Header />
+                    <Header headerText='Selecione o(s) assento(s)' />
                     <Seats seats={getSession.seats} seatsSelected={seatsSelected} setSeatsSelected={setSeatsSelected} />
-                    <ClientDataForm />
+                    <ClientDataForm clientData={clientData} setClientData={setClientData} seatsSelected={seatsSelected} />
                     <Footer posterURL={getSession.movie.posterURL} title={getSession.movie.title} day={getSession.day} time={getSession.name} />
                 </Wrapper>
             }

@@ -4,7 +4,7 @@ import Movies from "./Movies"
 export default function HomeScreen() {
     return (
         <>
-            <Header />
+            <Header headerText='Selecione o filme' />
             <Movies />
         </>
     )
