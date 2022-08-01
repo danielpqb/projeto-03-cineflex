@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-export default function Seat({ seats, seatsSelected, setSeatsSelected, index, seat }) {
+export default function Seat({ seatsSelected, setSeatsSelected, index, seat }) {
 
     const [seatState, setSeatState] = useState(seat.isAvailable ? 'available' : 'unavailable')
 
@@ -16,6 +16,9 @@ export default function Seat({ seats, seatsSelected, setSeatsSelected, index, se
             const arr = [...seatsSelected]
             arr.splice(seatsSelected.indexOf(seat.id), 1)
             setSeatsSelected(arr)
+        }
+        else if (seatState === 'unavailable') {
+            alert('Esse assento não está disponível.')
         }
     }
 
