@@ -1,10 +1,18 @@
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Header({ headerText }) {
+export default function Header({ headerText, headerBackButton }) {
+
+    const navigate = useNavigate()
 
     return (
         <Wrapper>
             <div className="logo">
+                {headerBackButton === true &&
+                    <div className="back-button" onClick={() => { navigate(-1) }}>
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </div>
+                }
                 CINEFLEX
             </div>
             <div className="text">
@@ -53,5 +61,12 @@ const Wrapper = styled.div`
     font-size: 24px;
 
     color: #247A6B;
+}
+
+.back-button {
+    position: absolute;
+    left: 20px;
+    justify-content: flex-start;
+    height: 70px;
 }
 `

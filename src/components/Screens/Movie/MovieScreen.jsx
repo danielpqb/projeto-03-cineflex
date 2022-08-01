@@ -17,7 +17,7 @@ export default function MovieScreen() {
 
     return (
         <>
-            <Header headerText='Selecione o horário' />
+            <Header headerText='Selecione o horário' headerBackButton={true} />
             <MovieDates movieDates={movieDates} />
             <Footer posterURL={movieDates.posterURL} title={movieDates.title} />
         </>

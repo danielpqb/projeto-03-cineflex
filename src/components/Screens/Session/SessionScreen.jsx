@@ -29,7 +29,7 @@ export default function SessionScreen() {
         <>
             {getSession.seats !== undefined &&
                 <Wrapper>
-                    <Header headerText='Selecione o(s) assento(s)' />
+                    <Header headerText='Selecione o(s) assento(s)' headerBackButton={true} />
                     <Seats seats={getSession.seats} seatsSelected={seatsSelected} setSeatsSelected={setSeatsSelected} />
                     <ClientDataForm clientData={clientData} setClientData={setClientData} seatsSelected={seatsSelected} getSession={getSession} />
                     <Footer posterURL={getSession.movie.posterURL} title={getSession.movie.title} day={getSession.day} time={getSession.name} />

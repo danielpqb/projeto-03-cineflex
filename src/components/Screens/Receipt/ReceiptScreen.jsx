@@ -11,13 +11,16 @@ export default function ReceiptScreen() {
 
     return (
         <Wrapper>
-            <Header headerText={
-                <>
-                    <div className="success">
-                        Pedido feito com sucesso!
-                    </div>
-                </>
-            } />
+            <Header
+                headerBackButton={true}
+                headerText={
+                    <>
+                        <div className="success">
+                            Pedido feito com sucesso!
+                        </div>
+                    </>
+                }
+            />
             <Receipt clientData={clientData} seatsSelected={seatsSelected} getSession={getSession} />
         </Wrapper>
     )
