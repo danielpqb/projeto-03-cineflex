@@ -53,7 +53,18 @@ export default function ClientDataForm({ clientData, setClientData, seatsSelecte
                         onChange={(e) => {
                             let clientCpf = e.target.value
                             clientCpf = clientCpf.replaceAll(/\D/g, '')
-                            clientCpf = clientCpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4')
+                            if (clientCpf.length <= 3) {
+                            }
+                            else if (clientCpf.length <= 6) {
+                                clientCpf = clientCpf.replace(/^(\d{3})?(\d{3})?/, '$1.$2')
+                            }
+                            else if (clientCpf.length <= 9) {
+                                clientCpf = clientCpf.replace(/^(\d{3})?(\d{3})?(\d{3})?/, '$1.$2.$3')
+                            }
+                            else {
+                                clientCpf = clientCpf.replace(/^(\d{3})?(\d{3})?(\d{3})?(\d{2})?/, '$1.$2.$3-$4')
+                            }
+
                             setClientData({ ...clientData, cpf: clientCpf })
                         }}
                     />
