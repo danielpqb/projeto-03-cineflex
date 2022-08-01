@@ -49,7 +49,13 @@ export default function ClientDataForm({ clientData, setClientData, seatsSelecte
                         required
                         pattern="^([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}$"
                         value={clientData.cpf}
-                        onChange={(e) => { setClientData({ ...clientData, cpf: e.target.value }) }}
+                        maxLength="14"
+                        onChange={(e) => {
+                            let clientCpf = e.target.value
+                            clientCpf = clientCpf.replaceAll(/\D/g, '')
+                            clientCpf = clientCpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4')
+                            setClientData({ ...clientData, cpf: clientCpf })
+                        }}
                     />
                 </div>
                 <div>
